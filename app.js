@@ -43,7 +43,7 @@ app.use(function(err, req, res, next) {
 });
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/crimesdb');
+mongoose.connect('mongodb://mongo:27017/crimesdb');
 
 //import model
 var Crime = require('./model/crime');
