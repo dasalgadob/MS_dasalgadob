@@ -149,3 +149,26 @@ function toCrime(body, model){
 	});
 
 }//end toCrime
+
+exports.findById = function(model, id, response){
+	model.findOne({_id: id}, function(error, result){
+		if(error){
+			console.log(error);
+			response.writeHead(500, {'Content-Type': 'text/plain'});
+			return;
+		}else{
+			if(!result){
+				if(response != null){
+					response.writeHead(404, {'Content-Type': 'text/plain'});
+					response.end('Not found');
+				}
+				return;
+			}
+			if(response != null){
+				response.setHeader('Content-Type': 'application/json');
+				response.send(result);
+			}
+			console.log(result);
+		}
+	});
+}

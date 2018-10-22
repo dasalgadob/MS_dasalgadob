@@ -4,6 +4,11 @@ var url = require('url');
 var dataservice = require('../modules/crimedataservice');
 var Crime = require('../model/crime');
 
+router.get('/:id', function(request, response){
+  console.log(request.url + ' querying for ' + request.params.id);
+  dataservice.findById(Crime, request.params.id, response);
+})
+
 /* GET crimes listing. */
 router.get('/', function(req, res, next) {
     var getParams = url.parse(req.url, true).query;
