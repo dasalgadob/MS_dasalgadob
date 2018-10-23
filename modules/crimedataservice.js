@@ -165,7 +165,7 @@ exports.findById = function(model, id, response){
 				return;
 			}
 			if(response != null){
-				response.setHeader('Content-Type': 'application/json');
+				response.setHeader('Content-Type', 'application/json');
 				response.send(result);
 			}
 			console.log(result);
