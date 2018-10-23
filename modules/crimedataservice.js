@@ -172,3 +172,39 @@ exports.findById = function(model, id, response){
 		}
 	});
 }
+
+
+exports.remove = function(model, id, response){
+	console.log("Deleting crime with id:" + id);
+	model.findOne({_id: id}, function(error, data){
+		if(error){
+			console.log(error);
+			if(response != null){
+				response.writeHead(500, {'Content-Type': 'text/plain'});
+				response.end( 'Internal server error');
+			}
+			return;
+		}else{
+			if(!data){
+				console.log("not found");
+				if(response != null){
+					response.writeHead(404, {'Content-Type': 'text/plain'});
+					reponse.end('Not found');
+				}
+				return;
+			} else{
+				data.remove(function(error){
+					if(!error){
+						data.remove();
+					}else{
+						console.log(error);
+					}
+				});
+				if(response != null){
+					response.send('Deleted');
+				}
+				return;
+			}
+		}
+	});
+}
