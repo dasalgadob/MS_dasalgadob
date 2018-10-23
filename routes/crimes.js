@@ -33,7 +33,7 @@ router.put('/', function(req, res){
 	dataservice.update(Crime, req.body, res);
 });
 
-router.del('/:id', function(req, res){
+router.delete('/:id', function(req, res){
   dataservice.remove(Crime, request.params.id, response);
 });
 
